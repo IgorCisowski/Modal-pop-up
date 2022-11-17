@@ -32,14 +32,36 @@ const closeMessage = (key) => {
 window.addEventListener("keydown", closeMessage);
 
 // remove article by clicking outside of it HOW TO MANAGE TARGET EVENT ONLY ON SECTION!!!!!!!!!!!!!
-const removeArticle = (e) => {
-  if (e.target.contains(article)) {
-    article.classList.remove("hover");
-    message.classList.remove("see");
-    document.body.style.overflowY = "";
+// const removeArticle = (e) => {
+//   console.log(message, e.target);
+//   if (
+//     !article.contains(e.target) &&
+//     e.target !== article &&
+//     show !== e.target
+//   ) {
+//     article.classList.remove("hover");
+//     message.classList.remove("see");
+//     document.body.style.overflowY = "";
+//   }
+// };
+// document.body.addEventListener("click", removeArticle);
+const closePopup = () => {
+  article.classList.remove("hover");
+  message.classList.remove("see");
+  document.body.style.overflowY = "";
+};
+document.body.addEventListener("click", (e) =>
+  clickOutside(e, closePopup, article, show)
+);
+
+const clickOutside = (e, cb, ...elements) => {
+  if (
+    !article.contains(e.target) &&
+    elements.every((element) => element !== e.target)
+  ) {
+    cb();
   }
 };
-message.addEventListener("click", removeArticle);
 
 // toggle  darkMode / lightMode
 const body = document.querySelector("body");
