@@ -31,7 +31,7 @@ const closeMessage = (key) => {
 
 window.addEventListener("keydown", closeMessage);
 
-// remove article by clicking outside of it
+// remove article by clicking outside of it HOW TO MANAGE TARGET EVENT ONLY ON SECTION!!!!!!!!!!!!!
 const removeArticle = (e) => {
   if (e.target.contains(article)) {
     article.classList.remove("hover");
